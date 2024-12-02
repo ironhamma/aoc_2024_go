@@ -2,6 +2,7 @@ package main
 
 import (
 	day1 "aoc/day-1"
+	day2 "aoc/day-2"
 	"bufio"
 	"fmt"
 	"log"
@@ -36,6 +37,9 @@ func main() {
 	case 1:
 		dayOne := day1.Day1Solver{}
 		taskSolver = dayOne
+	case 2:
+		dayTwo := day2.Day2Solver{}
+		taskSolver = dayTwo
 	default:
 		if dayNum < 25 && dayNum > 0 {
 			CreateDayFiles(day)
@@ -72,7 +76,7 @@ func main() {
 	doneChan := make(chan bool)
 
 	switch dayNum {
-	case 1:
+	case 1, 2:
 		go taskSolver.Solve(fileName, answerChan, doneChan, errorChan)
 	default:
 		fmt.Println("🟨 This day was not yet implemented! Bummer...")
